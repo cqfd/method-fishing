@@ -28,26 +28,3 @@ module Look
     end
   end
 end
-
-# Examples
-
-class Counter
-  def initialize
-    count = 0
-    define_singleton_method(:get) { count }
-    define_singleton_method(:inc) { count += 1 }
-  end
-
-  include Enumerable
-  def each &blk
-    blk.call(get)
-  end
-
-  def method_missing(m, *args, &blk)
-    puts "You tried to call #{m} with #{args} and #{blk}"
-  end
-
-  def self.random_class_method
-    puts "I'm a random class method!"
-  end
-end
